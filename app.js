@@ -4,11 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//var session = require('express-session');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var admin = require('./routes/admin');
+var login = require('./routes/login');
 
 var app = express();
 
@@ -23,6 +24,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: 'SecretKey))))',
+  resave: false,
+  saveUninitialized: true
+}));
 
 var db = require('knex')({
   client: 'mysql',
@@ -44,9 +51,18 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/', routes);
+var auth = function (req, res, next) {
+  if (req.session.username) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
+};
+
+app.use('/login', login);
 app.use('/users', users);
 app.use('/admin', admin);
+app.use('/', auth, routes);
 
 
 // catch 404 and forward to error handler
