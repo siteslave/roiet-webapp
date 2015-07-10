@@ -5,7 +5,6 @@ angular.module('app.filter.toThaiDate', [])
             var strMonth = moment(date).get('month') + 1;
             var strYear = parseInt(moment(date).get('year')) + 543;
 
-
             return [strDate, strMonth, strYear].join('/');
 
         }
