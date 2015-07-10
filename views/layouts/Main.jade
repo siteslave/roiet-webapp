@@ -10,7 +10,8 @@ html(ng-app="App")
     script(src="/vendor/lumx/dist/lumx.js")
 
     script(src="/javascripts/app.js")
-
+    script(src="/javascripts/filter.js")
+    script(src="/javascripts/MainCtrl.js")
     block scripts
 
     link(rel="stylesheet", href="/vendor/lumx/dist/lumx.css")
@@ -70,7 +71,12 @@ html(ng-app="App")
             .list-row__primary
               i.icon.icon--l.icon--red.icon--circled.mdi.mdi-android
             .list-row__content
-              a ทะเบียนผู้รับบริการ
+              a(ui-sref="main") ทะเบียนผู้รับบริการ
+          li.list-row.list-row--has-separator
+            .list-row__primary
+              i.icon.icon--l.icon--green.icon--circled.mdi.mdi-account-plus
+            .list-row__content
+              a(ui-sref="users") ผู้ใช้งาน
 
       div(flex-item="8", class="card p+")
         block content

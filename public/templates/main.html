@@ -1,0 +1,56 @@
+<div flex-container="row" flex-gutter="24">
+    <div flex-item>
+        <lx-date-picker model="startDate" label="ตั้งแต่" locale="th" allow-clear="true"></lx-date-picker>
+    </div>
+    <div flex-item>
+        <lx-date-picker model="endDate" label="ถึง" locale="th" allow-clear="true"></lx-date-picker>
+    </div>
+    <div flex-item>
+        <br/>
+        <button class="btn btn--l btn--blue btn--raised" ng-click="show()">แสดง</button>
+    </div>
+</div>
+<div class="data-table-container">
+    <header class="data-table-header">
+        <div class="data-table-header__label">
+            <span class="fs-title">ผู้มารับบริการ</span>
+        </div>
+
+        <div class="data-table-header__actions">
+
+            <lx-search-filter model="query" filter-width="100%" placeholder="ค้นหา...">
+
+            </lx-search-filter>
+
+        </div>
+    </header>
+
+    <table class="data-table">
+        <thead>
+        <tr class="data-table__selectable-row">
+            <th></th>
+            <th>วันที่รับบริการ</th>
+            <th>HN</th>
+            <th>ชื่อ - สกุล</th>
+            <th>#</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr ng-repeat="p in patient | filter: query">
+            <td></td>
+            <td>{{ p.vstdate | toThaiDate }}</td>
+            <td>{{ p.hn }}</td>
+            <td>{{ p.pname }}{{ p.fname }} {{ p.lname }}</td>
+            <td>
+                <button class="btn btn--m btn--red btn--icon" lx-ripple>
+                    <i class="mdi mdi-account-remove"></i>
+                </button>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
