@@ -31,6 +31,11 @@ var db = require('knex')({
     database: 'hosxp',
     user: 'hosxp',
     password: 'hosxp'
+  },
+  debug: true,
+  pool: {
+    min: 10,
+    max: 100
   }
 });
 

@@ -19,15 +19,12 @@ router.get('/about', function (req, res) {
 });
 
 
-router.get('/get-service', function (req, res) {
+router.post('/get-service', function (req, res) {
 
   var db = req.db;
 
-  //var startDate = req.body.startDate;
-  //var endDate = req.body.endDate;
-  //
-  var startDate = '2015-01-01';
-  var endDate = '2015-01-03';
+  var startDate = req.body.startDate;
+  var endDate = req.body.endDate;
 
   Users.getService(db, startDate, endDate)
       .then(function (rows) {
@@ -37,8 +34,6 @@ router.get('/get-service', function (req, res) {
       })
 
 });
-
-
 
 
 module.exports = router;
