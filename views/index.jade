@@ -1,0 +1,28 @@
+extends ./layouts/Main
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div.container.xxx.xx
+    div.row#div1
+      div.col(flex-container="row", flex-gutter="8")
+        .col-xl-5#div2
+          input#txtUser(type="text", value="xxx").form-control
+  -
+    var name = 'NodeJS'
+    var b = 'ExpressJS'
+  h1 #{name}
+  h2= b
+  ul
+  each f in fruits
+    li #{ f }
+block menu
+  ul
+    li
+      a(href="#/xx") Menu 1
+    li
+      a Menu 2
+    li
+      a Menu 3
+block footer
+  p Footer

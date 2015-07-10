@@ -1,0 +1,76 @@
+doctype html
+html(ng-app="App")
+  head
+    title= title
+    script(src="/vendor/jquery/dist/jquery.js")
+    script(src="/vendor/velocity/velocity.js")
+    script(src="/vendor/moment/min/moment-with-locales.js")
+    script(src="/vendor/angular/angular.js")
+    script(src="/vendor/angular-ui-router/release/angular-ui-router.js")
+    script(src="/vendor/lumx/dist/lumx.js")
+
+    script(src="/javascripts/app.js")
+
+    block scripts
+
+    link(rel="stylesheet", href="/vendor/lumx/dist/lumx.css")
+  body
+    .toolbar.bgc-indigo-500
+      .toolbar__left(class="mr+++")
+        a(href="/").btn.btn--l.btn--white.btn--icon(lx-ripple, lx-tooltip="หน้าหลัก", tooltip-position="right")
+          i.mdi.mdi-windows
+      span.toolbar__label.tc-white.fs-title Roiet-WebApp
+      .toolbar__right
+        lx-dropdown(position="right", from-top)
+          button.btn.btn--l.btn--white.btn--icon(lx-ripple, lx-dropdown-toggle,
+          lx-tooltip="xxx", tooltip-position="bottom")
+            i.mdi.mdi-monitor-multiple
+          lx-dropdown-menu
+            ul
+              li
+                a.dropdown-link
+                  i.mdi.mdi-television-guide
+                  | &nbsp; xxxxx
+              li
+                a.dropdown-link
+                  i.mdi.mdi-theater
+                  | &nbsp; xxxxxx
+              li
+                a.dropdown-link
+                  i.mdi.mdi-poll-box
+                  | &nbsp; xxxxxx
+        button.btn.btn--l.btn--white.btn--icon(lx-ripple, lx-tooltip="ออกจากระบบ", tooltip-position="bottom")
+          i.mdi.mdi-launch
+        lx-dropdown(position="right", from-top)
+          button.btn.btn--l.btn--white.btn--icon(lx-ripple, lx-dropdown-toggle,
+          lx-tooltip="xxxxx",
+          tooltip-position="left")
+            i.mdi.mdi-settings
+          lx-dropdown-menu
+            ul
+              li
+                span.dropdown-link.dropdown-link--is-header Tools
+              li
+                a.dropdown-link อัปโหลดไฟล์
+              li
+                span.dropdown-link.dropdown-link--is-header ตัังค่าระบบ
+              li
+                a.dropdown-link ข้อมูลส่วนตัว
+              li
+                a.dropdown-link เปลี่ยนรหัสผ่าน
+
+
+    div(flex-container="row")
+      div(flex-item="4", class="card p+")
+        span.fs-title.display-block.mb เมนูการใช้งาน
+
+        .divider.divider--dark
+        ul(class="list mt++")
+          li.list-row.list-row--has-separator
+            .list-row__primary
+              i.icon.icon--l.icon--red.icon--circled.mdi.mdi-android
+            .list-row__content
+              a ทะเบียนผู้รับบริการ
+
+      div(flex-item="8", class="card p+")
+        block content

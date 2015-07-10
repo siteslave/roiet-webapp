@@ -1,0 +1,16 @@
+{
+  "name": "WebApp",
+  "version": "0.0.0",
+  "authors": [
+    "Satit Rianpit <rianpit@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ]
+}
