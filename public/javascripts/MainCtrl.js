@@ -1,5 +1,24 @@
 angular.module('app.controller.MainCtrl', [])
-    .controller('MainCtrl', function ($scope, MainServ, LxProgressService) {
+    .controller('MainCtrl', function ($scope, MainServ, LxProgressService, LxDialogService) {
+
+        $scope.getDiag = function (vn) {
+
+            MainServ.getDiag(vn)
+                .then(function (data) {
+                    //
+                    if (data.ok) {
+                        $scope.diag = data.rows;
+                        LxDialogService.open('mdlDiag');
+                    } else {
+                        alert('Error');
+                        console.log(data.msg);
+                    }
+                }, function (err) {
+                    console.log(err);
+                    alert('Error');
+                })
+
+        };
 
         $scope.show = function () {
 

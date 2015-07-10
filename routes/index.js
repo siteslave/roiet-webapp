@@ -35,5 +35,20 @@ router.post('/get-service', function (req, res) {
 
 });
 
+router.post('/get-diag', function (req, res) {
+
+  var db = req.db;
+
+  var vn = req.body.vn;
+
+  Users.getDiag(db, vn)
+      .then(function (rows) {
+        res.send({ ok: true, rows: rows });
+      }, function (err) {
+        res.send({ ok: false, msg: err });
+      })
+
+});
+
 
 module.exports = router;

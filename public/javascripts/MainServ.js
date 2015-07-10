@@ -5,6 +5,32 @@ angular.module('app.service.MainServ', [])
 
         return {
 
+            getDiag: function (vn) {
+
+                var q = $q.defer();
+
+                var options = {
+                    url: '/get-diag',
+                    method: 'POST',
+                    data: {
+                        vn: vn
+                    }
+                };
+
+                $http(options)
+                    .success(function (data) {
+                        // Success
+                        q.resolve(data);
+                    })
+                    .error(function (data, status) {
+                        // Error
+                        q.reject(err);
+                    });
+
+                return q.promise;
+
+            },
+
             getService: function (startDate, endDate) {
 
                 var q = $q.defer();
